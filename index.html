@@ -540,6 +540,63 @@ footer{background:var(--onix);padding:68px 64px 28px}
   padding: 4px 12px;
   font-family: var(--font-body);
 }
+
+/* ── MÉTODO AC ILUMINA ── */
+#metodo {
+  background: var(--onix);
+  padding: 100px 64px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+#metodo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 60% 50%, rgba(167,158,150,0.08) 0%, transparent 70%);
+}
+.metodo-eyebrow {
+  display: inline-flex; align-items: center; gap: 14px;
+  font-family: var(--font-body); font-size: 0.65rem; font-weight: 300;
+  letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--bege); margin-bottom: 48px;
+}
+.metodo-eyebrow::before, .metodo-eyebrow::after {
+  content: ''; width: 40px; height: 1px; background: var(--bege);
+}
+.metodo-lines {
+  display: flex; flex-direction: column; gap: 6px;
+  margin-bottom: 52px;
+}
+.metodo-line {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+  font-weight: 200; line-height: 1.25;
+  color: var(--white); letter-spacing: 0.03em;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.metodo-line.in { opacity: 1; transform: translateY(0); }
+.metodo-line em { font-style: italic; color: var(--prata); }
+.metodo-line.accent {
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  color: var(--prata); font-weight: 200; margin-top: 12px;
+}
+.metodo-divider {
+  width: 1px; height: 60px;
+  background: linear-gradient(to bottom, transparent, var(--bege), transparent);
+  margin: 0 auto 44px;
+}
+.metodo-desc {
+  font-family: var(--font-body); font-size: 0.95rem; font-weight: 200;
+  line-height: 2; color: rgba(255,255,255,0.55);
+  max-width: 560px; margin: 0 auto 52px;
+}
+.metodo-desc strong { color: var(--prata); font-weight: 300; }
+@media(max-width:640px) {
+  #metodo { padding: 72px 24px; }
+  .metodo-line { font-size: 1.5rem; }
+}
 </style>
 </head>
 <body>
@@ -552,7 +609,7 @@ footer{background:var(--onix);padding:68px 64px 28px}
   </a>
   <div class="nav-links">
     <a href="#sobre">Sobre</a>
-    <a href="#diferenciais">Diferenciais</a>
+    <a href="#metodo">Método</a>
     <a href="#tratamentos">Tratamentos</a>
     <a href="#depoimentos">Depoimentos</a>
     <a href="#formulario" class="nav-cta">Agendar</a>
@@ -565,7 +622,7 @@ footer{background:var(--onix);padding:68px 64px 28px}
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <a href="#sobre" onclick="closeMob()">Sobre</a>
-  <a href="#diferenciais" onclick="closeMob()">Diferenciais</a>
+  <a href="#metodo" onclick="closeMob()">Método</a>
   <a href="#tratamentos" onclick="closeMob()">Tratamentos</a>
   <a href="#depoimentos" onclick="closeMob()">Depoimentos</a>
   <a href="#formulario" onclick="closeMob()">Agendar</a>
@@ -639,6 +696,31 @@ footer{background:var(--onix);padding:68px 64px 28px}
     <div class="dif-card reveal d1"><span class="dif-icon">◎</span><h3 class="dif-title">Ambiente premium e acolhedor</h3><p class="dif-text">Espaço sofisticado onde cada visita se transforma em uma experiência sensorial de bem-estar e acolhimento.</p></div>
     <div class="dif-card reveal d2"><span class="dif-icon">⟡</span><h3 class="dif-title">Protocolos exclusivos</h3><p class="dif-text">Combinações únicas de tratamentos desenvolvidas por nossa equipe para resultados superiores e duradouros.</p></div>
     <div class="dif-card reveal d3"><span class="dif-icon">✿</span><h3 class="dif-title">Resultados naturais</h3><p class="dif-text">Nossa filosofia prioriza a harmonia e a naturalidade, realçando o que você já tem de mais belo.</p></div>
+  </div>
+</section>
+
+<!-- MÉTODO AC ILUMINA -->
+<section id="metodo">
+  <div class="reveal">
+    <p class="metodo-eyebrow">Tratamento principal</p>
+  </div>
+  <div class="metodo-lines">
+    <div class="metodo-line reveal d1">Não acreditamos em</div>
+    <div class="metodo-line reveal d2"><em>protocolos prontos.</em></div>
+    <div class="metodo-line reveal d3">Acreditamos em peles</div>
+    <div class="metodo-line reveal d4"><em>diferentes.</em></div>
+    <div class="metodo-line reveal d5">Histórias diferentes.</div>
+    <div class="metodo-line accent reveal d5">Necessidades diferentes.</div>
+  </div>
+  <div class="metodo-divider reveal"></div>
+  <p class="metodo-desc reveal">
+    Por isso criamos um método exclusivo que respeita sua individualidade e entrega exatamente o que sua pele precisa para voltar a expressar <strong>saúde, luminosidade e vitalidade.</strong>
+  </p>
+  <div class="reveal">
+    <a href="https://wa.me/5565981259468" target="_blank" class="btn-p-inv" style="margin:0 auto">
+      <svg width="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+      Agendar Minha Avaliação
+    </a>
   </div>
 </section>
 
