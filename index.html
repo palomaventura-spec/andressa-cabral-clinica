@@ -825,11 +825,11 @@ footer{background:var(--onix);padding:68px 64px 28px}
       <p class="sec-sub" style="text-align:center;margin:0 auto">Preencha o formulário e nossa equipe entrará em contato para confirmar o melhor horário para você.</p>
     </div>
     <div class="form-grid reveal d2">
-      <div class="fg"><label class="flabel">Nome completo</label><input type="text" class="finput" placeholder="Seu nome"></div>
-      <div class="fg"><label class="flabel">WhatsApp</label><input type="tel" class="finput" placeholder="(11) 99999-9999"></div>
-      <div class="fg"><label class="flabel">E-mail</label><input type="email" class="finput" placeholder="seu@email.com"></div>
+      <div class="fg"><label class="flabel">Nome completo</label><input type="text" id="f-nome" class="finput" placeholder="Seu nome"></div>
+      <div class="fg"><label class="flabel">WhatsApp</label><input type="tel" id="f-tel" class="finput" placeholder="(65) 99999-9999"></div>
+      <div class="fg"><label class="flabel">E-mail</label><input type="email" id="f-email" class="finput" placeholder="seu@email.com"></div>
       <div class="fg"><label class="flabel">Tratamento de interesse</label>
-        <select class="finput">
+        <select id="f-trat" class="finput">
           <option value="">Selecione...</option>
           <option>Harmonização Facial</option>
           <option>Botox</option>
@@ -841,8 +841,8 @@ footer{background:var(--onix);padding:68px 64px 28px}
           <option>Rejuvenescimento Facial</option>
         </select>
       </div>
-      <div class="fg full"><label class="flabel">Mensagem (opcional)</label><textarea class="finput" rows="3" placeholder="Conte-nos mais sobre suas expectativas..."></textarea></div>
-      <div class="fg full"><button class="btn-p fsub" style="background:var(--onix);border-color:var(--onix)" onclick="handleSubmit(event)"><svg width="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Solicitar Avaliação Gratuita</button></div>
+      <div class="fg full"><label class="flabel">Mensagem (opcional)</label><textarea id="f-msg" class="finput" rows="3" placeholder="Conte-nos mais sobre suas expectativas..."></textarea></div>
+      <div class="fg full"><button class="btn-p fsub" style="background:var(--onix);border-color:var(--onix)" onclick="handleSubmit(event)"><svg width="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Enviar pelo WhatsApp</button></div>
     </div>
     <p style="text-align:center;font-size:0.68rem;color:var(--prata);margin-top:14px;font-weight:200">🔒 Suas informações são 100% confidenciais e seguras.</p>
   </div>
@@ -955,15 +955,31 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// Form submit
+// Form submit → WhatsApp
 function handleSubmit(e) {
   e.preventDefault();
-  const btn = e.currentTarget;
-  const orig = btn.innerHTML;
-  btn.innerHTML = '✦ Solicitação enviada com sucesso!';
-  btn.style.background = '#3a7a52';
-  btn.disabled = true;
-  setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.disabled = false; }, 4000);
+  const nome  = document.getElementById('f-nome').value.trim();
+  const tel   = document.getElementById('f-tel').value.trim();
+  const trat  = document.getElementById('f-trat').value;
+  const msg   = document.getElementById('f-msg').value.trim();
+
+  if (!nome) { alert('Por favor, informe seu nome.'); return; }
+  if (!trat) { alert('Por favor, selecione um tratamento.'); return; }
+
+  let texto = `Olá Andressa! 😊 Meu nome é *${nome}*`;
+  if (tel) texto += `, meu WhatsApp é *${tel}*`;
+  texto += `.
+
+Tenho interesse em saber mais sobre *${trat}*`;
+  if (msg) texto += `.
+
+${msg}`;
+  texto += `.
+
+Gostaria de agendar uma avaliação!`;
+
+  const url = `https://wa.me/5565981259468?text=${encodeURIComponent(texto)}`;
+  window.open(url, '_blank');
 }
 </script>
 </body>
