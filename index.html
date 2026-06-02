@@ -36,11 +36,13 @@ body{font-family:var(--font-body);background:var(--white);color:var(--onix);over
 
 /* ── LOGO IMAGES ── */
 .logo-link { display:inline-flex; align-items:center; text-decoration:none; }
-.logo-img { height:32px; width:auto; display:block; transition:opacity 0.3s; }
-.logo-img--dark { opacity:1; }
+.logo-img { height:38px; width:auto; display:block; transition:opacity 0.4s, filter 0.4s; }
+/* On dark hero: show logo-dark (prata lines on transparent/dark) — invert to white */
+.logo-img--dark { display:block; filter: brightness(0) invert(1); opacity:0.9; }
 .logo-img--light { display:none; }
+/* On scrolled white nav: show logo-light (dark lines, light bg) — use as-is but make bg transparent */
 nav.scrolled .logo-img--dark { display:none; }
-nav.scrolled .logo-img--light { display:block; }
+nav.scrolled .logo-img--light { display:block; filter: brightness(0); opacity:0.85; }
 
 /* ── LOGO SVG (removed) ── */
 .logo-svg {
@@ -584,9 +586,9 @@ footer{background:var(--onix);padding:68px 64px 28px}
     <div class="ad-badge">Resultados reais de pacientes</div>
   </div>
   <div class="ad-grid">
-    <div class="ad-card reveal d1"><img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&q=80" alt="Harmonização facial" class="ad-img"><div class="ad-ov"><p class="ad-lbl">Harmonização Facial</p></div></div>
-    <div class="ad-card reveal d2"><img src="https://images.unsplash.com/photo-1591291621164-2c6367723315?w=600&q=80" alt="Rejuvenescimento" class="ad-img"><div class="ad-ov"><p class="ad-lbl">Rejuvenescimento</p></div></div>
-    <div class="ad-card reveal d3"><img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&q=80" alt="Preenchimento" class="ad-img"><div class="ad-ov"><p class="ad-lbl">Preenchimento Labial</p></div></div>
+    <div class="ad-card reveal d1"><img src="https://images.unsplash.com/photo-1552693673-1bf958298935?w=600&q=80" alt="Harmonização facial" class="ad-img"><div class="ad-ov"><p class="ad-lbl">Harmonização Facial</p></div></div>
+    <div class="ad-card reveal d2"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80" alt="Rejuvenescimento" class="ad-img"><div class="ad-ov"><p class="ad-lbl">Rejuvenescimento</p></div></div>
+    <div class="ad-card reveal d3"><img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=600&q=80" alt="Preenchimento" class="ad-img"><div class="ad-ov"><p class="ad-lbl">Preenchimento Labial</p></div></div>
   </div>
 </section>
 
@@ -611,7 +613,7 @@ footer{background:var(--onix);padding:68px 64px 28px}
 <section id="sobre">
   <div class="sobre-grid">
     <div class="sobre-img-wrap reveal">
-      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Clínica Andressa Cabral" class="sobre-img">
+      <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80" alt="Clínica Andressa Cabral" class="sobre-img">
       <div class="sobre-frame"></div>
       <div class="sobre-badge"><span class="n">8+</span><span class="l">anos de excelência</span></div>
     </div>
