@@ -36,13 +36,13 @@ body{font-family:var(--font-body);background:var(--white);color:var(--onix);over
 
 /* ── LOGO IMAGES ── */
 .logo-link { display:inline-flex; align-items:center; text-decoration:none; }
-.logo-img { height:38px; width:auto; display:block; transition:opacity 0.4s, filter 0.4s; }
-/* On dark hero: show logo-dark (prata lines on transparent/dark) — invert to white */
-.logo-img--dark { display:block; filter: brightness(0) invert(1); opacity:0.9; }
+.logo-img { height:36px; width:auto; display:block; transition:opacity 0.4s; }
+/* Hero dark bg: prata (taupe) logo - visible and elegant */
+.logo-img--dark { display:block; opacity:1; }
 .logo-img--light { display:none; }
-/* On scrolled white nav: show logo-light (dark lines, light bg) — use as-is but make bg transparent */
+/* Scrolled white bg: onix (dark) logo */
 nav.scrolled .logo-img--dark { display:none; }
-nav.scrolled .logo-img--light { display:block; filter: brightness(0); opacity:0.85; }
+nav.scrolled .logo-img--light { display:block; opacity:1; }
 
 /* ── LOGO SVG (removed) ── */
 .logo-svg {
@@ -484,8 +484,8 @@ footer{background:var(--onix);padding:68px 64px 28px}
 <!-- NAV -->
 <nav id="navbar">
   <a href="#" class="logo-link" aria-label="Andressa Cabral">
-    <img src="https://palomaventura-spec.github.io/andressa-cabral-clinica/assets/logo-dark.png" alt="Andressa Cabral" class="logo-img logo-img--dark">
-    <img src="https://palomaventura-spec.github.io/andressa-cabral-clinica/assets/logo-light.png" alt="Andressa Cabral" class="logo-img logo-img--light">
+    <img src="https://palomaventura-spec.github.io/andressa-cabral-clinica/assets/logo-prata.png" alt="Andressa Cabral" class="logo-img logo-img--dark">
+    <img src="https://palomaventura-spec.github.io/andressa-cabral-clinica/assets/logo-onix.png" alt="Andressa Cabral" class="logo-img logo-img--light">
   </a>
   <div class="nav-links">
     <a href="#diferenciais">Diferenciais</a>
@@ -694,7 +694,7 @@ footer{background:var(--onix);padding:68px 64px 28px}
   <div class="ft">
     <div class="ft-brand">
       <a href="#" aria-label="Andressa Cabral">
-        <img src="https://palomaventura-spec.github.io/andressa-cabral-clinica/assets/logo-dark.png" alt="Andressa Cabral" style="height:36px;width:auto;display:block;">
+        <img src="https://palomaventura-spec.github.io/andressa-cabral-clinica/assets/logo-prata.png" alt="Andressa Cabral" style="height:36px;width:auto;display:block;">
       </a>
       <p class="ft-desc">Clínica de estética premium dedicada a revelar sua beleza natural com segurança, tecnologia e cuidado humanizado.</p>
       <div class="ft-soc">
