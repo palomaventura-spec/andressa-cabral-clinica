@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Andressa Cabral Clínica — Tratamentos estéticos avançados para quem busca resultados naturais, segurança e excelência.">
 <title>Andressa Cabral — Clínica Estética</title>
+<link rel="icon" type="image/png" href="https://palomaventura-spec.github.io/andressa-cabral-clinica/assets/logo-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Noka not on Google Fonts — using Nunito (thin/light) as closest match for display; Area Normal → Outfit light -->
@@ -32,7 +33,16 @@ body{font-family:var(--font-body);background:var(--white);color:var(--onix);over
 ::-webkit-scrollbar-track{background:var(--pergaminho)}
 ::-webkit-scrollbar-thumb{background:var(--bege);border-radius:2px}
 
-/* ── LOGO SVG ── */
+
+/* ── LOGO IMAGES ── */
+.logo-link { display:inline-flex; align-items:center; text-decoration:none; }
+.logo-img { height:32px; width:auto; display:block; transition:opacity 0.3s; }
+.logo-img--dark { opacity:1; }
+.logo-img--light { display:none; }
+nav.scrolled .logo-img--dark { display:none; }
+nav.scrolled .logo-img--light { display:block; }
+
+/* ── LOGO SVG (removed) ── */
 .logo-svg {
   display:inline-flex;align-items:center;gap:14px;text-decoration:none;
 }
@@ -471,20 +481,9 @@ footer{background:var(--onix);padding:68px 64px 28px}
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="logo-svg">
-    <!-- Monogram AC inline SVG -->
-    <svg class="logo-monogram" width="44" height="44" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- C circle -->
-      <path d="M62 40 A24 24 0 1 1 62 40.01" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-      <!-- A shape -->
-      <line x1="32" y1="62" x2="48" y2="14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-      <line x1="48" y1="14" x2="64" y2="62" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-      <line x1="37" y1="45" x2="59" y2="45" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-    </svg>
-    <span class="logo-text">
-      <span>Andressa</span>
-      <span>Cabral</span>
-    </span>
+  <a href="#" class="logo-link" aria-label="Andressa Cabral">
+    <img src="https://palomaventura-spec.github.io/andressa-cabral-clinica/assets/logo-dark.png" alt="Andressa Cabral" class="logo-img logo-img--dark">
+    <img src="https://palomaventura-spec.github.io/andressa-cabral-clinica/assets/logo-light.png" alt="Andressa Cabral" class="logo-img logo-img--light">
   </a>
   <div class="nav-links">
     <a href="#diferenciais">Diferenciais</a>
@@ -692,14 +691,8 @@ footer{background:var(--onix);padding:68px 64px 28px}
 <footer>
   <div class="ft">
     <div class="ft-brand">
-      <a href="#" class="logo-svg" style="text-decoration:none">
-        <svg class="logo-monogram" width="38" height="38" viewBox="0 0 80 80" fill="none">
-          <path d="M62 40 A24 24 0 1 1 62 40.01" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-          <line x1="32" y1="62" x2="48" y2="14" stroke-width="1.2" stroke-linecap="round"/>
-          <line x1="48" y1="14" x2="64" y2="62" stroke-width="1.2" stroke-linecap="round"/>
-          <line x1="37" y1="45" x2="59" y2="45" stroke-width="1.2" stroke-linecap="round"/>
-        </svg>
-        <span class="logo-text" style="color:var(--pergaminho)"><span>Andressa</span><span>Cabral</span></span>
+      <a href="#" aria-label="Andressa Cabral">
+        <img src="https://palomaventura-spec.github.io/andressa-cabral-clinica/assets/logo-dark.png" alt="Andressa Cabral" style="height:36px;width:auto;display:block;">
       </a>
       <p class="ft-desc">Clínica de estética premium dedicada a revelar sua beleza natural com segurança, tecnologia e cuidado humanizado.</p>
       <div class="ft-soc">
