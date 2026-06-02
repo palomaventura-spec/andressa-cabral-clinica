@@ -477,6 +477,61 @@ footer{background:var(--onix);padding:68px 64px 28px}
   .cta-btns{flex-direction:column;align-items:center}
   #antes-depois,.#cta,#formulario,footer{padding-left:20px!important;padding-right:20px!important}
 }
+
+/* ── WHATSAPP CARDS ── */
+.dep-card.wachat {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 0;
+  overflow: hidden;
+  border-radius: 2px;
+}
+.dep-card.wachat::before { display: none; }
+.wc-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: 18px 20px 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--pergaminho);
+}
+.wc-avatar {
+  width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--bege), var(--cinza));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 0.9rem; color: var(--white); font-weight: 300;
+}
+.wc-name { font-size: 0.78rem; font-weight: 400; color: var(--onix); letter-spacing: 0.04em; }
+.wc-tag { font-size: 0.62rem; color: var(--bege); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 2px; }
+.wc-stars { margin-left: auto; color: var(--bege); font-size: 0.7rem; letter-spacing: 2px; flex-shrink: 0; }
+.wc-body { padding: 16px 20px; display: flex; flex-direction: column; gap: 8px; }
+.wc-bubble {
+  padding: 10px 14px;
+  font-size: 0.8rem; font-weight: 200; line-height: 1.6;
+  max-width: 88%; border-radius: 0px;
+  font-family: var(--font-body);
+}
+.wc-them {
+  background: var(--pergaminho);
+  color: var(--onix);
+  border-left: 2px solid var(--prata);
+  margin-right: auto;
+  margin: 0 auto 6px 20px;
+}
+.wc-me {
+  background: var(--onix);
+  color: rgba(255,255,255,0.85);
+  border-right: 2px solid var(--bege);
+  margin-left: auto;
+  margin: 0 20px 6px auto;
+  font-style: italic;
+}
+.wc-ac-badge {
+  margin: 16px 20px 18px auto;
+  display: table;
+  font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--bege); border: 1px solid var(--border);
+  padding: 4px 12px;
+  font-family: var(--font-body);
+}
 </style>
 </head>
 <body>
@@ -625,12 +680,111 @@ footer{background:var(--onix);padding:68px 64px 28px}
     <div class="divider" style="margin:18px auto"></div>
   </div>
   <div class="dep-grid">
-    <div class="dep-card reveal d1"><div class="dep-stars">★★★★★</div><p class="dep-text">"Hoje na academia uma aluna veio falar comigo. Ela disse que percebeu que eu rejuvenesci uns 10 anos! Eu falei que você que tá cuidando de mim."</p><div class="dep-author"><div class="dep-av">P</div><div><p class="dep-name">Paciente AC</p><p class="dep-meta">Método Ilumina AC</p></div></div><span class="dep-tag">Rejuvenescimento</span></div>
-    <div class="dep-card reveal d2"><div class="dep-stars">★★★★★</div><p class="dep-text">"Outra pele! Tá brilhando. Amando demais os resultados."</p><div class="dep-author"><div class="dep-av">P</div><div><p class="dep-name">Paciente AC</p><p class="dep-meta">Método Ilumina AC</p></div></div><span class="dep-tag">Limpeza de Pele</span></div>
-    <div class="dep-card reveal d3"><div class="dep-stars">★★★★★</div><p class="dep-text">"Meu amor estava tão feliz porque estou limpando meu rosto. Ele disse: você vai continuar, até porque é seu cartão de visita, eu vou pagar pra você."</p><div class="dep-author"><div class="dep-av">P</div><div><p class="dep-name">Paciente AC</p><p class="dep-meta">Método Ilumina AC</p></div></div><span class="dep-tag">Limpeza de Pele</span></div>
-    <div class="dep-card reveal d1"><div class="dep-stars">★★★★★</div><p class="dep-text">"A minha pele está radiante. Preciso mencionar: tô me achando muito linda!"</p><div class="dep-author"><div class="dep-av">P</div><div><p class="dep-name">Paciente AC</p><p class="dep-meta">Método Ilumina AC</p></div></div><span class="dep-tag">Bioestimuladores</span></div>
-    <div class="dep-card reveal d2"><div class="dep-stars">★★★★★</div><p class="dep-text">"Cadê a olheira?? Você é sensacional! Não faço ideia da minha alegria e só estamos no 3º dia."</p><div class="dep-author"><div class="dep-av">P</div><div><p class="dep-name">Paciente AC</p><p class="dep-meta">Método Ilumina AC</p></div></div><span class="dep-tag">Harmonização Facial</span></div>
-    <div class="dep-card reveal d3"><div class="dep-stars">★★★★★</div><p class="dep-text">"Indiquei umas 10 pessoas. Eu gostei muito, vale muito a pena. Muito bom mesmo!"</p><div class="dep-author"><div class="dep-av">P</div><div><p class="dep-name">Paciente AC</p><p class="dep-meta">Método Ilumina AC</p></div></div><span class="dep-tag">Protocolo AC</span></div>
+
+    <!-- Card 1 -->
+    <div class="dep-card wachat reveal d1">
+      <div class="wc-header">
+        <div class="wc-avatar">P</div>
+        <div>
+          <p class="wc-name">Paciente AC</p>
+          <p class="wc-tag">Rejuvenescimento</p>
+        </div>
+        <div class="wc-stars">★★★★★</div>
+      </div>
+      <div class="wc-bubble wc-them">Hoje na academia uma aluna veio falar comigo. Ela me disse que percebeu que eu rejuvenesci uns 10 anos!</div>
+      <div class="wc-bubble wc-them">Eu falei que você que tá cuidando de mim ❤️</div>
+      <div class="wc-bubble wc-me">que coisa boa né... 🥰</div>
+      <div class="wc-bubble wc-me">e o melhor... a pessoa não sabe dizer o que foi</div>
+      <div class="wc-bubble wc-them">Isso que ela me falou</div>
+      <div class="wc-bubble wc-me">somente que você está mais jovem ✨</div>
+      <div class="wc-ac-badge">AC Ilumina</div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="dep-card wachat reveal d2">
+      <div class="wc-header">
+        <div class="wc-avatar">P</div>
+        <div>
+          <p class="wc-name">Paciente AC</p>
+          <p class="wc-tag">Limpeza de Pele</p>
+        </div>
+        <div class="wc-stars">★★★★★</div>
+      </div>
+      <div class="wc-bubble wc-them">Descamando</div>
+      <div class="wc-bubble wc-them">Está</div>
+      <div class="wc-bubble wc-me">Tá brilhando né 🤩</div>
+      <div class="wc-bubble wc-them">Outraaaaaaa pele</div>
+      <div class="wc-bubble wc-them">Amandoooooo ❤️</div>
+      <div class="wc-ac-badge">AC Ilumina</div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="dep-card wachat reveal d3">
+      <div class="wc-header">
+        <div class="wc-avatar">P</div>
+        <div>
+          <p class="wc-name">Paciente AC</p>
+          <p class="wc-tag">Limpeza de Pele</p>
+        </div>
+        <div class="wc-stars">★★★★★</div>
+      </div>
+      <div class="wc-bubble wc-them">Eu falei, amor estava tão feliz pq estou limpando meu rosto</div>
+      <div class="wc-bubble wc-them">Ele disse: você vai continuar, é seu cartão de visita, eu vou pagar pra você</div>
+      <div class="wc-bubble wc-me">Fico feliz por você que deu o primeiro passo! 🌟</div>
+      <div class="wc-ac-badge">AC Ilumina</div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="dep-card wachat reveal d1">
+      <div class="wc-header">
+        <div class="wc-avatar">P</div>
+        <div>
+          <p class="wc-name">Paciente AC</p>
+          <p class="wc-tag">Bioestimuladores</p>
+        </div>
+        <div class="wc-stars">★★★★★</div>
+      </div>
+      <div class="wc-bubble wc-them">Aliás, a minha pele está radiante</div>
+      <div class="wc-bubble wc-them">Preciso mencionar</div>
+      <div class="wc-bubble wc-me">Amoooooooo 🥰</div>
+      <div class="wc-bubble wc-them">Mas tô me achando muito linda</div>
+      <div class="wc-bubble wc-me">Tá sentindo ela linda?? ❤️</div>
+      <div class="wc-ac-badge">AC Ilumina</div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="dep-card wachat reveal d2">
+      <div class="wc-header">
+        <div class="wc-avatar">P</div>
+        <div>
+          <p class="wc-name">Paciente AC</p>
+          <p class="wc-tag">Harmonização Facial</p>
+        </div>
+        <div class="wc-stars">★★★★★</div>
+      </div>
+      <div class="wc-bubble wc-them">Amigaaaaaaa olha essa pele só com protetor com cor</div>
+      <div class="wc-bubble wc-them">Cadê a olheira??????? Vc não faz ideia da minha alegria e só estamos no 3º dia 😱</div>
+      <div class="wc-bubble wc-me">Lindaaaa e descansada!!!!! Você merece ❤️</div>
+      <div class="wc-ac-badge">AC Ilumina</div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="dep-card wachat reveal d3">
+      <div class="wc-header">
+        <div class="wc-avatar">P</div>
+        <div>
+          <p class="wc-name">Paciente AC</p>
+          <p class="wc-tag">Protocolo AC</p>
+        </div>
+        <div class="wc-stars">★★★★★</div>
+      </div>
+      <div class="wc-bubble wc-them">Indiquei eu acho que umas 10 pessoas</div>
+      <div class="wc-bubble wc-them">Eu gostei muito</div>
+      <div class="wc-bubble wc-me">Vale muito a pena né... 🌿</div>
+      <div class="wc-bubble wc-them">Simmm. Muito bom</div>
+      <div class="wc-ac-badge">AC Ilumina</div>
+    </div>
+
   </div>
 </section>
 
