@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Andressa Cabral Clínica — Tratamentos estéticos avançados para quem busca resultados naturais, segurança e excelência.">
+<title>Andressa Cabral — Clínica Estética</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Noka not on Google Fonts — using Nunito (thin/light) as closest match for display; Area Normal → Outfit light -->
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pergaminho: #F3F1EF;
+  --prata:      #C9C2BB;
+  --bege:       #A79E96;
+  --cinza:      #7A6D63;
+  --onix:       #0F0E0E;
+  --white:      #FFFFFF;
+  --accent:     #A79E96;
+  --border:     rgba(169,158,150,0.25);
+
+  --font-display: 'Nunito', sans-serif;
+  --font-body:    'Outfit', sans-serif;
+  --ease: cubic-bezier(0.4,0,0.2,1);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);background:var(--white);color:var(--onix);overflow-x:hidden;line-height:1.6}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--pergaminho)}
+::-webkit-scrollbar-thumb{background:var(--bege);border-radius:2px}
+
+/* ── LOGO SVG ── */
+.logo-svg {
+  display:inline-flex;align-items:center;gap:14px;text-decoration:none;
+}
+.logo-monogram svg { transition: opacity 0.3s; }
+.logo-text {
+  display:flex;flex-direction:column;line-height:1.1;
+  font-family:var(--font-display);
+  font-size:0.75rem;
+  font-weight:200;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+}
+
+/* ── NAV ── */
+nav {
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:28px 64px;
+  transition:background 0.5s var(--ease), padding 0.35s var(--ease), border-color 0.5s;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled {
+  background:rgba(243,241,239,0.96);
+  backdrop-filter:blur(16px);
+  padding:18px 64px;
+  border-bottom-color:var(--border);
+}
+nav .logo-text { color:var(--white); }
+nav.scrolled .logo-text { color:var(--onix); }
+nav .logo-monogram path, nav .logo-monogram circle { stroke:var(--white); }
+nav.scrolled .logo-monogram path,
+nav.scrolled .logo-monogram circle { stroke:var(--onix); }
+
+.nav-links { display:flex;gap:36px;align-items:center; }
+.nav-links a {
+  font-family:var(--font-body);font-size:0.7rem;font-weight:300;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:rgba(255,255,255,0.75);text-decoration:none;
+  transition:color 0.3s;
+}
+nav.scrolled .nav-links a { color:var(--cinza); }
+.nav-links a:hover { color:var(--white); }
+nav.scrolled .nav-links a:hover { color:var(--onix); }
+.nav-cta {
+  font-size:0.65rem!important;letter-spacing:0.22em!important;
+  border:1px solid rgba(255,255,255,0.5)!important;
+  color:var(--white)!important;
+  padding:10px 22px;border-radius:40px;
+  transition:all 0.3s!important;
+}
+nav.scrolled .nav-cta { border-color:var(--bege)!important; color:var(--cinza)!important; }
+.nav-cta:hover { background:var(--white)!important; color:var(--onix)!important; }
+nav.scrolled .nav-cta:hover { background:var(--onix)!important; color:var(--white)!important; border-color:var(--onix)!important; }
+
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{width:22px;height:1px;background:var(--white);transition:all 0.3s;display:block}
+nav.scrolled .hamburger span{background:var(--onix)}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(4px,4px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(4px,-4px)}
+
+.mobile-menu {
+  position:fixed;inset:0;z-index:998;
+  background:var(--onix);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;
+  transform:translateX(100%);transition:transform 0.45s var(--ease);
+}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu a {
+  font-family:var(--font-display);font-size:2rem;font-weight:200;
+  color:var(--pergaminho);text-decoration:none;letter-spacing:0.1em;transition:color 0.3s;
+}
+.mobile-menu a:hover{color:var(--prata)}
+
+/* ── HERO ── */
+#hero {
+  position:relative;min-height:100vh;
+  display:flex;align-items:center;
+  overflow:hidden;background:var(--onix);
+}
+.hero-bg {
+  position:absolute;inset:0;
+  background:
+    linear-gradient(160deg, rgba(15,14,14,0.88) 0%, rgba(15,14,14,0.45) 55%, rgba(15,14,14,0.65) 100%),
+    url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1800&q=85') center/cover no-repeat;
+  animation:hZoom 18s ease-in-out infinite alternate;
+}
+@keyframes hZoom { from{transform:scale(1)} to{transform:scale(1.05)} }
+.hero-content {
+  position:relative;z-index:2;
+  padding:0 64px;max-width:680px;
+  animation:fadeUp 1.3s ease both;
+}
+@keyframes fadeUp {
+  from{opacity:0;transform:translateY(32px)}
+  to{opacity:1;transform:translateY(0)}
+}
+.hero-tag {
+  display:inline-flex;align-items:center;gap:12px;
+  font-family:var(--font-body);font-size:0.65rem;font-weight:300;
+  letter-spacing:0.32em;text-transform:uppercase;
+  color:var(--prata);margin-bottom:32px;
+}
+.hero-tag::before{content:'';width:36px;height:1px;background:var(--prata)}
+.hero-title {
+  font-family:var(--font-display);
+  font-size:clamp(2.8rem,5.2vw,4.4rem);
+  font-weight:200;line-height:1.12;
+  color:var(--white);margin-bottom:24px;
+  letter-spacing:0.02em;
+}
+.hero-title em{font-style:italic;color:var(--prata)}
+.hero-sub {
+  font-size:0.9rem;font-weight:200;line-height:1.9;
+  color:rgba(255,255,255,0.6);max-width:460px;margin-bottom:52px;
+}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+
+.btn-p {
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--font-body);font-size:0.68rem;font-weight:300;
+  letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;
+  padding:15px 34px;border-radius:40px;
+  background:var(--onix);color:var(--white);border:1px solid var(--onix);
+  transition:all 0.35s var(--ease);
+}
+.btn-p:hover{background:transparent;color:var(--white);border-color:rgba(255,255,255,0.5)}
+.btn-s {
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--font-body);font-size:0.68rem;font-weight:300;
+  letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;
+  padding:15px 34px;border-radius:40px;
+  background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.35);
+  transition:all 0.35s var(--ease);
+}
+.btn-s:hover{border-color:rgba(255,255,255,0.7)}
+
+.hero-scroll {
+  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2;
+  animation:scrollPulse 2.2s ease-in-out infinite;
+}
+.hero-scroll span{font-size:0.58rem;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.35);font-family:var(--font-body)}
+.scroll-bar{width:1px;height:44px;background:linear-gradient(to bottom,rgba(201,194,187,0.7),transparent)}
+@keyframes scrollPulse{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
+
+.hero-stats {
+  position:absolute;right:64px;bottom:56px;z-index:2;
+  display:flex;gap:44px;
+  animation:fadeUp 1.6s ease both 0.35s;
+}
+.stat .num{font-family:var(--font-display);font-size:1.9rem;font-weight:200;color:var(--prata);display:block;letter-spacing:0.05em}
+.stat .lbl{font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.38)}
+
+/* ── SECTIONS ── */
+section{padding:100px 64px}
+.eyebrow {
+  display:inline-flex;align-items:center;gap:14px;
+  font-family:var(--font-body);font-size:0.65rem;font-weight:300;
+  letter-spacing:0.32em;text-transform:uppercase;color:var(--bege);
+  margin-bottom:18px;
+}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--bege)}
+h2.sec-title {
+  font-family:var(--font-display);
+  font-size:clamp(1.9rem,3.8vw,3rem);
+  font-weight:200;line-height:1.18;
+  color:var(--onix);margin-bottom:18px;letter-spacing:0.02em;
+}
+h2.sec-title em{font-style:italic;color:var(--bege)}
+.sec-sub{font-size:0.87rem;font-weight:200;color:var(--cinza);line-height:1.85;max-width:500px}
+.divider{width:48px;height:1px;background:linear-gradient(to right,var(--bege),transparent);margin:28px 0}
+
+/* ── DIFERENCIAIS ── */
+#diferenciais{background:var(--pergaminho)}
+.dif-intro{margin-bottom:60px}
+.dif-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.dif-card {
+  background:var(--pergaminho);padding:48px 40px;
+  position:relative;overflow:hidden;
+  transition:background 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.dif-card::after {
+  content:'';position:absolute;left:0;top:0;bottom:0;
+  width:2px;background:var(--bege);
+  transform:scaleY(0);transform-origin:bottom;transition:transform 0.4s var(--ease);
+}
+.dif-card:hover{background:var(--white);transform:translateY(-3px)}
+.dif-card:hover::after{transform:scaleY(1)}
+.dif-icon{font-size:1.1rem;margin-bottom:22px;color:var(--bege);display:block}
+.dif-title{font-family:var(--font-display);font-size:1.05rem;font-weight:300;color:var(--onix);margin-bottom:10px;letter-spacing:0.03em}
+.dif-text{font-size:0.8rem;font-weight:200;color:var(--cinza);line-height:1.75}
+
+/* ── TRATAMENTOS ── */
+#tratamentos{background:var(--white)}
+.trat-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;gap:32px}
+.trat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.trat-card {
+  border:1px solid var(--border);padding:36px 26px 28px;
+  position:relative;overflow:hidden;
+  transition:all 0.4s var(--ease);background:var(--white);
+}
+.trat-card::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;
+  height:2px;background:var(--bege);
+  transform:scaleX(0);transform-origin:left;transition:transform 0.4s var(--ease);
+}
+.trat-card:hover{box-shadow:0 20px 50px rgba(15,14,14,0.06);border-color:var(--prata)}
+.trat-card:hover::before{transform:scaleX(1)}
+.trat-n{font-family:var(--font-display);font-size:0.62rem;letter-spacing:0.25em;color:var(--prata);margin-bottom:18px;font-weight:300}
+.trat-icon{font-size:1.4rem;margin-bottom:14px;display:block}
+.trat-name{font-family:var(--font-display);font-size:1.05rem;font-weight:300;color:var(--onix);margin-bottom:10px;line-height:1.3;letter-spacing:0.02em}
+.trat-desc{font-size:0.78rem;font-weight:200;color:var(--cinza);line-height:1.75;margin-bottom:22px}
+.trat-btn {
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:0.65rem;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--bege);background:none;border:none;cursor:pointer;
+  font-family:var(--font-body);transition:gap 0.3s, color 0.3s;padding:0;
+}
+.trat-btn:hover{gap:11px;color:var(--onix)}
+.trat-btn svg{width:13px}
+
+/* ── ANTES & DEPOIS ── */
+#antes-depois{background:var(--onix);padding:100px 64px}
+.ad-badge {
+  display:inline-flex;align-items:center;gap:10px;margin-top:36px;
+  border:1px solid rgba(201,194,187,0.25);padding:9px 20px;
+  font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--prata);font-family:var(--font-body);
+}
+.ad-badge::before{content:'○';font-size:0.5rem}
+.ad-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px}
+.ad-card{position:relative;overflow:hidden;aspect-ratio:3/4;background:#1a1918;cursor:pointer}
+.ad-img{width:100%;height:100%;object-fit:cover;transition:transform 0.65s var(--ease);filter:grayscale(20%)}
+.ad-card:hover .ad-img{transform:scale(1.06);filter:grayscale(0)}
+.ad-ov {
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(15,14,14,0.88) 0%,transparent 55%);
+  opacity:0;transition:opacity 0.4s;display:flex;align-items:flex-end;padding:26px;
+}
+.ad-card:hover .ad-ov{opacity:1}
+.ad-lbl{font-family:var(--font-display);font-size:0.95rem;color:var(--white);font-weight:200;letter-spacing:0.08em}
+
+/* ── DEPOIMENTOS ── */
+#depoimentos{background:var(--pergaminho)}
+.dep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}
+.dep-card {
+  background:var(--white);padding:38px 32px;
+  position:relative;border:1px solid transparent;
+  transition:all 0.4s var(--ease);
+}
+.dep-card::before{
+  content:'\201C';font-family:var(--font-display);font-size:4.5rem;
+  color:var(--border);position:absolute;top:10px;right:24px;line-height:1;
+}
+.dep-card:hover{border-color:var(--border);box-shadow:0 14px 44px rgba(15,14,14,0.05)}
+.dep-stars{letter-spacing:3px;margin-bottom:18px;color:var(--bege);font-size:0.82rem}
+.dep-text{font-family:var(--font-display);font-size:0.97rem;font-style:italic;font-weight:200;color:var(--onix);line-height:1.75;margin-bottom:26px}
+.dep-author{display:flex;align-items:center;gap:12px}
+.dep-av {
+  width:42px;height:42px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--pergaminho),var(--prata));
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-size:0.95rem;font-weight:300;color:var(--cinza);
+}
+.dep-name{font-size:0.78rem;font-weight:300;color:var(--onix);letter-spacing:0.04em}
+.dep-meta{font-size:0.68rem;color:var(--prata);font-weight:200}
+.dep-tag{
+  display:inline-block;margin-top:18px;
+  font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--bege);border:1px solid var(--border);padding:5px 13px;border-radius:20px;
+}
+
+/* ── SOBRE ── */
+#sobre{background:var(--white)}
+.sobre-grid{display:grid;grid-template-columns:1fr 1fr;gap:88px;align-items:center}
+.sobre-img-wrap{position:relative}
+.sobre-img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(15%);transition:filter 0.5s}
+.sobre-img-wrap:hover .sobre-img{filter:grayscale(0)}
+.sobre-frame{position:absolute;top:22px;left:22px;right:-22px;bottom:-22px;border:1px solid var(--border);z-index:-1}
+.sobre-badge {
+  position:absolute;bottom:36px;right:-22px;
+  background:var(--white);border:1px solid var(--border);
+  padding:18px 22px;text-align:center;
+  box-shadow:0 10px 36px rgba(15,14,14,0.07);
+}
+.sobre-badge .n{font-family:var(--font-display);font-size:1.9rem;font-weight:200;color:var(--bege);display:block}
+.sobre-badge .l{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--cinza)}
+.feats{display:flex;flex-direction:column;gap:26px;margin-top:32px}
+.feat{display:flex;gap:16px;align-items:flex-start}
+.feat-dot{width:6px;height:6px;border-radius:50%;background:var(--bege);flex-shrink:0;margin-top:7px}
+.feat-title{font-size:0.8rem;font-weight:300;color:var(--onix);margin-bottom:3px;letter-spacing:0.04em}
+.feat-text{font-size:0.77rem;font-weight:200;color:var(--cinza);line-height:1.7}
+
+/* ── CTA ── */
+#cta{
+  background:var(--onix);text-align:center;
+  position:relative;overflow:hidden;
+}
+#cta::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at center,rgba(167,158,150,0.1) 0%,transparent 68%);
+}
+#cta .eyebrow{justify-content:center}
+#cta .eyebrow::before{display:none}
+#cta h2.sec-title{color:var(--white)}
+#cta .sec-sub{color:rgba(255,255,255,0.4);margin:16px auto 44px}
+.cta-btns{display:flex;gap:14px;justify-content:center}
+.btn-p-inv{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--font-body);font-size:0.68rem;font-weight:300;
+  letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;
+  padding:15px 34px;border-radius:40px;
+  background:var(--white);color:var(--onix);border:1px solid var(--white);
+  transition:all 0.35s var(--ease);
+}
+.btn-p-inv:hover{background:transparent;color:var(--white)}
+.btn-s-inv{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--font-body);font-size:0.68rem;font-weight:300;
+  letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;
+  padding:15px 34px;border-radius:40px;
+  background:transparent;color:rgba(255,255,255,0.65);border:1px solid rgba(255,255,255,0.25);
+  transition:all 0.35s var(--ease);
+}
+.btn-s-inv:hover{color:var(--white);border-color:rgba(255,255,255,0.6)}
+
+/* ── FORMULÁRIO ── */
+#formulario{background:var(--pergaminho)}
+.form-wrap{max-width:660px;margin:0 auto;text-align:center}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:40px;text-align:left}
+.fg{display:flex;flex-direction:column;gap:6px}
+.fg.full{grid-column:1/-1}
+.flabel{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--cinza);font-weight:300}
+.finput {
+  background:rgba(255,255,255,0.75);border:1px solid var(--prata);
+  padding:13px 16px;font-family:var(--font-body);font-size:0.85rem;
+  color:var(--onix);outline:none;border-radius:3px;
+  transition:all 0.3s;
+}
+.finput:focus{border-color:var(--cinza);background:var(--white);box-shadow:0 0 0 3px rgba(122,109,99,0.08)}
+.finput::placeholder{color:var(--prata)}
+select.finput{appearance:none;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%237A6D63' stroke-width='1.2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.fsub{width:100%;margin-top:6px}
+
+/* ── RODAPÉ ── */
+footer{background:var(--onix);padding:68px 64px 28px}
+.ft{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;margin-bottom:56px}
+.ft-brand .logo-text{color:var(--pergaminho)!important}
+.ft-brand .logo-monogram path,
+.ft-brand .logo-monogram circle{stroke:var(--prata)}
+.ft-desc{font-size:0.78rem;color:rgba(255,255,255,0.3);line-height:1.85;margin:16px 0 24px;max-width:240px;font-weight:200}
+.ft-soc{display:flex;gap:10px}
+.soc-a{width:36px;height:36px;border:1px solid rgba(201,194,187,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--prata);font-size:0.8rem;text-decoration:none;transition:all 0.3s}
+.soc-a:hover{background:var(--prata);color:var(--onix);border-color:var(--prata)}
+.ft-col h4{font-family:var(--font-display);font-size:0.82rem;font-weight:300;color:var(--white);margin-bottom:18px;letter-spacing:0.1em}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.ft-col ul li a{font-size:0.75rem;color:rgba(255,255,255,0.3);text-decoration:none;font-weight:200;transition:color 0.3s;letter-spacing:0.02em}
+.ft-col ul li a:hover{color:var(--prata)}
+.ft-info{display:flex;flex-direction:column;gap:9px}
+.ft-info-item{display:flex;gap:9px;font-size:0.75rem;color:rgba(255,255,255,0.3);font-weight:200}
+.ft-info-item span:first-child{color:var(--prata);flex-shrink:0;font-size:0.82rem}
+.ft-bottom{border-top:1px solid rgba(255,255,255,0.05);padding-top:24px;display:flex;justify-content:space-between;align-items:center}
+.ft-copy{font-size:0.68rem;color:rgba(255,255,255,0.18);font-weight:200}
+.ft-tag{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.18)}
+
+/* ── MAP ── */
+.map-wrap{height:280px;position:relative;overflow:hidden}
+.map-wrap iframe{width:100%;height:100%;border:none;filter:grayscale(35%) contrast(1.05)}
+.map-pin{position:absolute;top:16px;left:16px;background:var(--white);padding:14px 18px;box-shadow:0 6px 20px rgba(15,14,14,0.12)}
+.map-pin h5{font-family:var(--font-display);font-size:0.88rem;font-weight:300;margin-bottom:4px}
+.map-pin p{font-size:0.72rem;color:var(--cinza);font-weight:200;line-height:1.5}
+.map-dot{width:6px;height:6px;background:var(--bege);border-radius:50%;display:inline-block;margin-right:5px}
+
+/* ── WA FLOAT ── */
+.wa-float{
+  position:fixed;bottom:28px;right:28px;z-index:1000;
+  width:52px;height:52px;background:#25D366;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 20px rgba(37,211,102,0.3);text-decoration:none;
+  transition:all 0.3s;animation:waPulse 3s ease-in-out infinite;
+}
+.wa-float:hover{transform:scale(1.08)}
+@keyframes waPulse{0%,100%{box-shadow:0 6px 20px rgba(37,211,102,0.3)}50%{box-shadow:0 6px 28px rgba(37,211,102,0.55)}}
+.wa-float svg{width:26px;fill:white}
+.wa-tip{position:absolute;right:62px;top:50%;transform:translateY(-50%);background:var(--onix);color:var(--white);font-size:0.7rem;padding:7px 13px;border-radius:3px;white-space:nowrap;font-family:var(--font-body);opacity:0;transition:opacity 0.3s;pointer-events:none}
+.wa-tip::after{content:'';position:absolute;top:50%;right:-6px;transform:translateY(-50%);border:4px solid transparent;border-left-color:var(--onix)}
+.wa-float:hover .wa-tip{opacity:1}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  nav{padding:22px 32px}
+  nav.scrolled{padding:15px 32px}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  section{padding:72px 32px}
+  #hero .hero-content{padding:0 32px}
+  .hero-stats{right:32px;bottom:72px;gap:28px}
+  .dif-grid{grid-template-columns:repeat(2,1fr)}
+  .trat-grid{grid-template-columns:repeat(2,1fr)}
+  .dep-grid{grid-template-columns:repeat(2,1fr)}
+  .sobre-grid{grid-template-columns:1fr;gap:52px}
+  .sobre-frame{display:none}
+  .ft{grid-template-columns:1fr 1fr;gap:40px}
+  #antes-depois{padding:72px 32px}
+  #cta{padding:80px 32px}
+  #formulario{padding:72px 32px}
+  footer{padding:60px 32px 24px}
+}
+@media(max-width:640px){
+  section{padding:60px 20px}
+  nav{padding:18px 20px}
+  nav.scrolled{padding:13px 20px}
+  .hero-content{padding:0 20px!important}
+  .hero-stats{display:none}
+  .hero-title{font-size:2.4rem}
+  .hero-btns{flex-direction:column}
+  .btn-p,.btn-s{justify-content:center;text-align:center}
+  .dif-grid,.trat-grid,.dep-grid,.ad-grid{grid-template-columns:1fr}
+  .ft{grid-template-columns:1fr}
+  .ft-bottom{flex-direction:column;gap:8px;text-align:center}
+  .form-grid{grid-template-columns:1fr}
+  .trat-header{flex-direction:column;align-items:flex-start;gap:16px}
+  .cta-btns{flex-direction:column;align-items:center}
+  #antes-depois,.#cta,#formulario,footer{padding-left:20px!important;padding-right:20px!important}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="logo-svg">
+    <!-- Monogram AC inline SVG -->
+    <svg class="logo-monogram" width="44" height="44" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- C circle -->
+      <path d="M62 40 A24 24 0 1 1 62 40.01" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <!-- A shape -->
+      <line x1="32" y1="62" x2="48" y2="14" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="48" y1="14" x2="64" y2="62" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="37" y1="45" x2="59" y2="45" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+    </svg>
+    <span class="logo-text">
+      <span>Andressa</span>
+      <span>Cabral</span>
+    </span>
+  </a>
+  <div class="nav-links">
+    <a href="#diferenciais">Diferenciais</a>
+    <a href="#tratamentos">Tratamentos</a>
+    <a href="#depoimentos">Depoimentos</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#formulario" class="nav-cta">Agendar</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#diferenciais" onclick="closeMob()">Diferenciais</a>
+  <a href="#tratamentos" onclick="closeMob()">Tratamentos</a>
+  <a href="#depoimentos" onclick="closeMob()">Depoimentos</a>
+  <a href="#sobre" onclick="closeMob()">Sobre</a>
+  <a href="#formulario" onclick="closeMob()">Agendar</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-tag">Clínica Estética Premium</p>
+    <h1 class="hero-title">Realce sua beleza com<br><em>naturalidade</em> e cuidado</h1>
+    <p class="hero-sub">Tratamentos estéticos avançados para quem busca resultados naturais, segurança e excelência em cada detalhe.</p>
+    <div class="hero-btns">
+      <a href="#formulario" class="btn-p">
+        <svg width="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+        Agendar Avaliação
+      </a>
+      <a href="https://wa.me/5511999999999" target="_blank" class="btn-s">
+        <svg width="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar no WhatsApp
+      </a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><span class="num">8+</span><span class="lbl">Anos de experiência</span></div>
+    <div class="stat"><span class="num">3k+</span><span class="lbl">Pacientes atendidas</span></div>
+    <div class="stat"><span class="num">98%</span><span class="lbl">Satisfação</span></div>
+  </div>
+  <div class="hero-scroll">
+    <span>Explore</span>
+    <div class="scroll-bar"></div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section id="diferenciais">
+  <div class="dif-intro reveal">
+    <p class="eyebrow">Nossa essência</p>
+    <h2 class="sec-title">Por que escolher a<br><em>Andressa Cabral?</em></h2>
+    <div class="divider"></div>
+    <p class="sec-sub">Cada detalhe foi pensado para oferecer uma experiência única de cuidado, segurança e resultados que respeitam sua beleza natural.</p>
+  </div>
+  <div class="dif-grid">
+    <div class="dif-card reveal d1"><span class="dif-icon">✦</span><h3 class="dif-title">Tecnologia de última geração</h3><p class="dif-text">Equipamentos certificados e protocolos atualizados com as mais recentes inovações da medicina estética mundial.</p></div>
+    <div class="dif-card reveal d2"><span class="dif-icon">◈</span><h3 class="dif-title">Profissionais especializados</h3><p class="dif-text">Equipe com formação de excelência, experiência comprovada e constante atualização técnico-científica.</p></div>
+    <div class="dif-card reveal d3"><span class="dif-icon">❋</span><h3 class="dif-title">Atendimento personalizado</h3><p class="dif-text">Cada protocolo é desenhado exclusivamente para você, respeitando suas particularidades e objetivos.</p></div>
+    <div class="dif-card reveal d1"><span class="dif-icon">◎</span><h3 class="dif-title">Ambiente premium e acolhedor</h3><p class="dif-text">Espaço sofisticado onde cada visita se transforma em uma experiência sensorial de bem-estar e acolhimento.</p></div>
+    <div class="dif-card reveal d2"><span class="dif-icon">⟡</span><h3 class="dif-title">Protocolos exclusivos</h3><p class="dif-text">Combinações únicas de tratamentos desenvolvidas por nossa equipe para resultados superiores e duradouros.</p></div>
+    <div class="dif-card reveal d3"><span class="dif-icon">✿</span><h3 class="dif-title">Resultados naturais</h3><p class="dif-text">Nossa filosofia prioriza a harmonia e a naturalidade, realçando o que você já tem de mais belo.</p></div>
+  </div>
+</section>
+
+<!-- TRATAMENTOS -->
+<section id="tratamentos">
+  <div class="trat-header">
+    <div class="reveal">
+      <p class="eyebrow">Expertise</p>
+      <h2 class="sec-title">Nossos<br><em>Tratamentos</em></h2>
+    </div>
+    <p class="sec-sub reveal" style="max-width:280px;text-align:right;">Ciência e arte em perfeita harmonia para revelar sua melhor versão.</p>
+  </div>
+  <div class="trat-grid">
+    <div class="trat-card reveal d1"><p class="trat-n">01</p><span class="trat-icon">✦</span><h3 class="trat-name">Harmonização Facial</h3><p class="trat-desc">Equilíbrio e simetria facial com técnicas avançadas para realçar sua beleza natural de forma sutil e elegante.</p><button class="trat-btn">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
+    <div class="trat-card reveal d2"><p class="trat-n">02</p><span class="trat-icon">◈</span><h3 class="trat-name">Botox</h3><p class="trat-desc">Toxina botulínica aplicada com precisão para suavizar linhas de expressão e prevenir o envelhecimento.</p><button class="trat-btn">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
+    <div class="trat-card reveal d3"><p class="trat-n">03</p><span class="trat-icon">❋</span><h3 class="trat-name">Preenchimento Labial</h3><p class="trat-desc">Volume e definição labial com ácido hialurônico, preservando a naturalidade e harmonia do rosto.</p><button class="trat-btn">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
+    <div class="trat-card reveal d4"><p class="trat-n">04</p><span class="trat-icon">◎</span><h3 class="trat-name">Bioestimuladores</h3><p class="trat-desc">Estímulo à produção de colágeno para uma pele mais firme, luminosa e jovem a longo prazo.</p><button class="trat-btn">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
+    <div class="trat-card reveal d1"><p class="trat-n">05</p><span class="trat-icon">✿</span><h3 class="trat-name">Limpeza de Pele Premium</h3><p class="trat-desc">Protocolo profundo de higienização e nutrição cutânea para uma pele impecável e radiante.</p><button class="trat-btn">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
+    <div class="trat-card reveal d2"><p class="trat-n">06</p><span class="trat-icon">⟡</span><h3 class="trat-name">Laser</h3><p class="trat-desc">Tecnologia de laser para rejuvenescimento, manchas, cicatrizes e renovação celular avançada.</p><button class="trat-btn">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
+    <div class="trat-card reveal d3"><p class="trat-n">07</p><span class="trat-icon">◇</span><h3 class="trat-name">Tratamentos Corporais</h3><p class="trat-desc">Protocolos completos para modelagem corporal, redução de medidas e firmeza da pele.</p><button class="trat-btn">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
+    <div class="trat-card reveal d4"><p class="trat-n">08</p><span class="trat-icon">✧</span><h3 class="trat-name">Rejuvenescimento Facial</h3><p class="trat-desc">Combinação de protocolos exclusivos para reverter os sinais do tempo com naturalidade e segurança.</p><button class="trat-btn">Saiba mais <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button></div>
+  </div>
+</section>
+
+<!-- ANTES & DEPOIS -->
+<section id="antes-depois" style="padding-bottom:80px">
+  <div class="reveal">
+    <p class="eyebrow" style="color:var(--prata)">Transformações</p>
+    <h2 class="sec-title" style="color:var(--white)">Antes &amp; <em>Depois</em></h2>
+    <div class="divider" style="background:linear-gradient(to right,var(--prata),transparent)"></div>
+    <p class="sec-sub" style="color:rgba(255,255,255,0.38)">Resultados reais que falam por si. Cada transformação é uma história de confiança e cuidado.</p>
+    <div class="ad-badge">Resultados reais de pacientes</div>
+  </div>
+  <div class="ad-grid">
+    <div class="ad-card reveal d1"><img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=600&q=80" alt="Harmonização facial" class="ad-img"><div class="ad-ov"><p class="ad-lbl">Harmonização Facial</p></div></div>
+    <div class="ad-card reveal d2"><img src="https://images.unsplash.com/photo-1591291621164-2c6367723315?w=600&q=80" alt="Rejuvenescimento" class="ad-img"><div class="ad-ov"><p class="ad-lbl">Rejuvenescimento</p></div></div>
+    <div class="ad-card reveal d3"><img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=600&q=80" alt="Preenchimento" class="ad-img"><div class="ad-ov"><p class="ad-lbl">Preenchimento Labial</p></div></div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos">
+  <div class="reveal" style="text-align:center;display:flex;flex-direction:column;align-items:center">
+    <p class="eyebrow" style="justify-content:center"><span style="width:28px;height:1px;background:var(--bege);display:block"></span>Histórias reais</p>
+    <h2 class="sec-title">O que nossas pacientes<br><em>dizem sobre nós</em></h2>
+    <div class="divider" style="margin:18px auto"></div>
+  </div>
+  <div class="dep-grid">
+    <div class="dep-card reveal d1"><div class="dep-stars">★★★★★</div><p class="dep-text">"Atendimento impecável e resultados incríveis. Superou todas as minhas expectativas. Me sinto renovada e muito mais confiante."</p><div class="dep-author"><div class="dep-av">A</div><div><p class="dep-name">Ana Carolina M.</p><p class="dep-meta">São Paulo, SP</p></div></div><span class="dep-tag">Harmonização Facial</span></div>
+    <div class="dep-card reveal d2"><div class="dep-stars">★★★★★</div><p class="dep-text">"O cuidado e a atenção da equipe são únicos. O resultado ficou completamente natural. Já indiquei para todas as minhas amigas."</p><div class="dep-author"><div class="dep-av">M</div><div><p class="dep-name">Mariana Oliveira</p><p class="dep-meta">Campinas, SP</p></div></div><span class="dep-tag">Bioestimuladores</span></div>
+    <div class="dep-card reveal d3"><div class="dep-stars">★★★★★</div><p class="dep-text">"Uma experiência transformadora. O ambiente é sofisticado e acolhedor. Minha pele nunca esteve tão bonita e hidratada."</p><div class="dep-author"><div class="dep-av">J</div><div><p class="dep-name">Juliana Santos</p><p class="dep-meta">Rio de Janeiro, RJ</p></div></div><span class="dep-tag">Rejuvenescimento</span></div>
+    <div class="dep-card reveal d1"><div class="dep-stars">★★★★★</div><p class="dep-text">"Finalmente encontrei um lugar onde me sinto segura e bem-cuidada. Os protocolos são realmente personalizados para o meu caso."</p><div class="dep-author"><div class="dep-av">F</div><div><p class="dep-name">Fernanda Costa</p><p class="dep-meta">Belo Horizonte, MG</p></div></div><span class="dep-tag">Laser Facial</span></div>
+    <div class="dep-card reveal d2"><div class="dep-stars">★★★★★</div><p class="dep-text">"O preenchimento labial ficou absolutamente perfeito — natural e discreto. A doutora tem uma sensibilidade artística excepcional."</p><div class="dep-author"><div class="dep-av">B</div><div><p class="dep-name">Beatriz Almeida</p><p class="dep-meta">Curitiba, PR</p></div></div><span class="dep-tag">Preenchimento Labial</span></div>
+    <div class="dep-card reveal d3"><div class="dep-stars">★★★★★</div><p class="dep-text">"Desde a primeira consulta me senti acolhida. Resultados que aparecem de verdade, com segurança e muito cuidado."</p><div class="dep-author"><div class="dep-av">L</div><div><p class="dep-name">Larissa Mendes</p><p class="dep-meta">Porto Alegre, RS</p></div></div><span class="dep-tag">Botox</span></div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="sobre-grid">
+    <div class="sobre-img-wrap reveal">
+      <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Clínica Andressa Cabral" class="sobre-img">
+      <div class="sobre-frame"></div>
+      <div class="sobre-badge"><span class="n">8+</span><span class="l">anos de excelência</span></div>
+    </div>
+    <div class="reveal d2">
+      <p class="eyebrow">Nossa história</p>
+      <h2 class="sec-title">Excelência em<br><em>cada detalhe</em></h2>
+      <div class="divider"></div>
+      <p class="sec-sub">A Andressa Cabral Clínica nasceu do desejo de criar um espaço onde beleza, ciência e bem-estar se encontram em perfeita harmonia. Nossa missão é revelar a sua melhor versão, respeitando sua individualidade.</p>
+      <div class="feats">
+        <div class="feat"><div class="feat-dot"></div><div><p class="feat-title">Segurança e Ética</p><p class="feat-text">Todos os procedimentos seguem os mais rígidos protocolos de segurança e ética médica.</p></div></div>
+        <div class="feat"><div class="feat-dot"></div><div><p class="feat-title">Tecnologia Avançada</p><p class="feat-text">Investimos continuamente nos melhores equipamentos e técnicas disponíveis no mercado global.</p></div></div>
+        <div class="feat"><div class="feat-dot"></div><div><p class="feat-title">Atendimento Humanizado</p><p class="feat-text">Cada paciente é única. Nosso atendimento é personalizado, acolhedor e orientado pelos seus objetivos.</p></div></div>
+        <div class="feat"><div class="feat-dot"></div><div><p class="feat-title">Equipe Especializada</p><p class="feat-text">Profissionais com formação de excelência, certificações e dedicação contínua à atualização.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="reveal">
+    <p class="eyebrow" style="justify-content:center"><span style="width:28px;height:1px;background:var(--bege);display:block"></span>Comece sua jornada</p>
+    <h2 class="sec-title" style="color:var(--white);text-align:center">Agende sua avaliação<br><em>personalizada</em></h2>
+    <p class="sec-sub" style="color:rgba(255,255,255,0.38);text-align:center;margin:16px auto 44px">Dê o primeiro passo em direção à sua melhor versão. Avaliação gratuita, sem compromisso, totalmente personalizada.</p>
+    <div class="cta-btns">
+      <a href="#formulario" class="btn-p-inv">
+        <svg width="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+        Agendar Agora
+      </a>
+      <a href="https://wa.me/5511999999999" target="_blank" class="btn-s-inv">
+        <svg width="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Falar com Especialista
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULÁRIO -->
+<section id="formulario">
+  <div class="form-wrap">
+    <div class="reveal">
+      <p class="eyebrow" style="justify-content:center"><span style="width:28px;height:1px;background:var(--bege);display:block"></span>Avaliação gratuita</p>
+      <h2 class="sec-title" style="text-align:center">Reserve sua <em>consulta</em></h2>
+      <p class="sec-sub" style="text-align:center;margin:0 auto">Preencha o formulário e nossa equipe entrará em contato para confirmar o melhor horário para você.</p>
+    </div>
+    <div class="form-grid reveal d2">
+      <div class="fg"><label class="flabel">Nome completo</label><input type="text" class="finput" placeholder="Seu nome"></div>
+      <div class="fg"><label class="flabel">WhatsApp</label><input type="tel" class="finput" placeholder="(11) 99999-9999"></div>
+      <div class="fg"><label class="flabel">E-mail</label><input type="email" class="finput" placeholder="seu@email.com"></div>
+      <div class="fg"><label class="flabel">Tratamento de interesse</label>
+        <select class="finput">
+          <option value="">Selecione...</option>
+          <option>Harmonização Facial</option>
+          <option>Botox</option>
+          <option>Preenchimento Labial</option>
+          <option>Bioestimuladores</option>
+          <option>Limpeza de Pele Premium</option>
+          <option>Laser</option>
+          <option>Tratamentos Corporais</option>
+          <option>Rejuvenescimento Facial</option>
+        </select>
+      </div>
+      <div class="fg full"><label class="flabel">Mensagem (opcional)</label><textarea class="finput" rows="3" placeholder="Conte-nos mais sobre suas expectativas..."></textarea></div>
+      <div class="fg full"><button class="btn-p fsub" style="background:var(--onix);border-color:var(--onix)" onclick="handleSubmit(event)"><svg width="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Solicitar Avaliação Gratuita</button></div>
+    </div>
+    <p style="text-align:center;font-size:0.68rem;color:var(--prata);margin-top:14px;font-weight:200">🔒 Suas informações são 100% confidenciais e seguras.</p>
+  </div>
+</section>
+
+<!-- MAPA -->
+<div class="map-wrap">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58432.89!2d-46.6884!3d-23.5613!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sJardins%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1718000000000!5m2!1spt-BR!2sbr" allowfullscreen loading="lazy"></iframe>
+  <div class="map-pin"><h5><span class="map-dot"></span>Andressa Cabral Clínica</h5><p>Rua Augusta, 2345, Jardins<br>São Paulo – SP</p></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div class="ft-brand">
+      <a href="#" class="logo-svg" style="text-decoration:none">
+        <svg class="logo-monogram" width="38" height="38" viewBox="0 0 80 80" fill="none">
+          <path d="M62 40 A24 24 0 1 1 62 40.01" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+          <line x1="32" y1="62" x2="48" y2="14" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="48" y1="14" x2="64" y2="62" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="37" y1="45" x2="59" y2="45" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text" style="color:var(--pergaminho)"><span>Andressa</span><span>Cabral</span></span>
+      </a>
+      <p class="ft-desc">Clínica de estética premium dedicada a revelar sua beleza natural com segurança, tecnologia e cuidado humanizado.</p>
+      <div class="ft-soc">
+        <a href="#" class="soc-a" aria-label="Instagram"><svg width="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="#" class="soc-a" aria-label="Facebook"><svg width="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="https://wa.me/5511999999999" class="soc-a" aria-label="WhatsApp"><svg width="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h4>Tratamentos</h4>
+      <ul>
+        <li><a href="#">Harmonização Facial</a></li>
+        <li><a href="#">Botox</a></li>
+        <li><a href="#">Preenchimento Labial</a></li>
+        <li><a href="#">Bioestimuladores</a></li>
+        <li><a href="#">Laser</a></li>
+        <li><a href="#">Tratamentos Corporais</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>A Clínica</h4>
+      <ul>
+        <li><a href="#sobre">Sobre nós</a></li>
+        <li><a href="#diferenciais">Diferenciais</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#formulario">Agendar</a></li>
+        <li><a href="#">Política de Privacidade</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Contato</h4>
+      <div class="ft-info">
+        <div class="ft-info-item"><span>📍</span><span>R. Augusta, 2345, Jardins<br>São Paulo – SP</span></div>
+        <div class="ft-info-item"><span>📞</span><span>(11) 3333-4444</span></div>
+        <div class="ft-info-item"><span>💬</span><span>(11) 99999-9999</span></div>
+        <div class="ft-info-item"><span>🕐</span><span>Seg–Sex: 9h–19h<br>Sáb: 9h–14h</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p class="ft-copy">© 2025 Andressa Cabral Clínica. Todos os direitos reservados.</p>
+    <p class="ft-tag">Beleza com naturalidade e sofisticação</p>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/5511999999999" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <div class="wa-tip">Falar no WhatsApp</div>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// Nav scroll
+const nb = document.getElementById('navbar');
+window.addEventListener('scroll', () => nb.classList.toggle('scrolled', scrollY > 70));
+
+// Hamburger
+const hb = document.getElementById('hamburger');
+const mm = document.getElementById('mobileMenu');
+hb.addEventListener('click', () => {
+  hb.classList.toggle('open');
+  mm.classList.toggle('open');
+  document.body.style.overflow = mm.classList.contains('open') ? 'hidden' : '';
+});
+function closeMob() {
+  hb.classList.remove('open');
+  mm.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Reveal
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Parallax hero
+window.addEventListener('scroll', () => {
+  const hc = document.querySelector('.hero-content');
+  if (hc && scrollY < innerHeight) {
+    hc.style.transform = `translateY(${scrollY * 0.22}px)`;
+    hc.style.opacity = 1 - scrollY / (innerHeight * 0.9);
+  }
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    if (id === '#') return;
+    const el = document.querySelector(id);
+    if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+// Form submit
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.currentTarget;
+  const orig = btn.innerHTML;
+  btn.innerHTML = '✦ Solicitação enviada com sucesso!';
+  btn.style.background = '#3a7a52';
+  btn.disabled = true;
+  setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.disabled = false; }, 4000);
+}
+</script>
+</body>
+</html>
