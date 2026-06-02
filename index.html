@@ -688,6 +688,88 @@ footer{background:var(--onix);padding:68px 64px 28px}
   .trat-group-grid { grid-template-columns: 1fr !important; }
   .trat-cta-box { padding: 36px 20px; }
 }
+
+/* ── MÉTODO HERO DESTAQUE ── */
+.trat-hero {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 0 !important;
+  margin-bottom: 0 !important;
+  background: var(--onix);
+  margin-left: -64px;
+  margin-right: -64px;
+  padding: 80px 64px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  border-bottom: 1px solid rgba(167,158,150,0.15);
+}
+.trat-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 60%, rgba(167,158,150,0.1) 0%, transparent 65%);
+}
+.trat-hero-logo {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-bottom: 40px;
+}
+.trat-hero-logo img {
+  height: 80px !important;
+  width: auto;
+  filter: none !important;
+  opacity: 1 !important;
+}
+.trat-hero-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; z-index: 1;
+}
+.trat-hero-text .eyebrow {
+  color: var(--prata) !important;
+  display: none;
+}
+.trat-hero-text .eyebrow::before { background: var(--prata) !important; }
+.trat-manifesto {
+  font-family: var(--font-display) !important;
+  font-size: clamp(1.1rem, 2vw, 1.5rem) !important;
+  font-weight: 200 !important;
+  font-style: italic !important;
+  color: rgba(255,255,255,0.65) !important;
+  line-height: 2 !important;
+  max-width: 640px;
+  margin: 0 auto 44px !important;
+}
+.trat-hero .btn-p {
+  background: transparent !important;
+  border-color: rgba(201,194,187,0.4) !important;
+  color: var(--prata) !important;
+  letter-spacing: 0.28em !important;
+  transition: all 0.35s !important;
+  margin: 0 auto;
+}
+.trat-hero .btn-p:hover {
+  background: var(--prata) !important;
+  color: var(--onix) !important;
+  border-color: var(--prata) !important;
+}
+.trat-hero-img-logo {
+  position: absolute;
+  right: 60px; top: 50%; transform: translateY(-50%);
+  opacity: 0.06;
+  height: 280px; width: auto;
+  pointer-events: none;
+}
+@media(max-width:1024px) {
+  .trat-hero { margin-left: -32px !important; margin-right: -32px !important; padding: 64px 32px !important; }
+  .trat-hero-img-logo { display: none; }
+}
+@media(max-width:640px) {
+  .trat-hero { margin-left: -20px !important; margin-right: -20px !important; padding: 56px 20px !important; }
+  .trat-hero-logo img { height: 56px !important; }
+}
 </style>
 </head>
 <body>
@@ -820,22 +902,23 @@ footer{background:var(--onix);padding:68px 64px 28px}
 
   <!-- Hero: Método AC Ilumina -->
   <div class="trat-hero reveal">
+    <!-- Logo fantasma decorativa -->
+    <img src="https://palomaventura-spec.github.io/andressa-cabral-clinica/assets/ilumina-logo-v.png" alt="" class="trat-hero-img-logo">
+    <!-- Logo principal -->
+    <div class="trat-hero-logo reveal">
+      <img src="https://palomaventura-spec.github.io/andressa-cabral-clinica/assets/ilumina-logo.png" alt="AC Ilumina">
+    </div>
     <div class="trat-hero-text">
-      <p class="eyebrow">Tratamento principal</p>
-      <img src="https://palomaventura-spec.github.io/andressa-cabral-clinica/assets/ilumina-logo.png" alt="Método AC Ilumina" style="height:52px;width:auto;display:block;margin:16px 0 20px;filter:brightness(0);">
       <p class="trat-manifesto">
         Não acreditamos em protocolos prontos.<br>
         Criamos uma jornada personalizada para devolver luminosidade,<br>
         vitalidade e saúde à sua pele, respeitando sua individualidade<br>
         e sua beleza natural.
       </p>
-      <a href="https://wa.me/5565981259468" target="_blank" class="btn-p" style="background:var(--onix);border-color:var(--onix);display:inline-flex">
+      <a href="https://wa.me/5565981259468" target="_blank" class="btn-p">
         <svg width="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         Quero conhecer o método
       </a>
-    </div>
-    <div class="trat-hero-logo">
-      <img src="https://palomaventura-spec.github.io/andressa-cabral-clinica/assets/ilumina-logo-v.png" alt="AC Ilumina">
     </div>
   </div>
 
