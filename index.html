@@ -775,6 +775,67 @@ footer{background:var(--onix);padding:68px 64px 28px}
   .trat-hero { margin-left: -20px !important; margin-right: -20px !important; padding: 56px 20px !important; }
   .trat-hero-logo img { height: 56px !important; }
 }
+
+/* ── NOSSA ESSÊNCIA ── */
+.ess-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 0; border: 1px solid var(--border);
+}
+.ess-card {
+  padding: 44px 36px;
+  border-right: 1px solid var(--border);
+  background: var(--white);
+  transition: background 0.4s;
+}
+.ess-card:last-child { border-right: none; }
+.ess-card:hover { background: var(--pergaminho); }
+.ess-sep {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 20px;
+}
+.ess-sep-line { flex:1; height:1px; background:var(--border); }
+.ess-sep-label {
+  font-family: var(--font-body); font-size: 0.6rem;
+  font-weight: 300; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--bege);
+  white-space: nowrap;
+}
+.ess-text {
+  font-size: 0.85rem; font-weight: 200;
+  color: var(--cinza); line-height: 1.85;
+}
+.ess-closing {
+  text-align: center; margin-top: 72px;
+  padding: 56px 40px;
+  background: var(--onix);
+  margin-left: -64px; margin-right: -64px;
+  margin-bottom: -100px;
+}
+.ess-closing-lines {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-weight: 200; font-style: italic;
+  color: var(--white); line-height: 1.6;
+  margin-bottom: 32px;
+}
+.ess-closing-divider {
+  width: 40px; height: 1px;
+  background: var(--bege);
+  margin: 0 auto 28px;
+}
+.ess-closing-sub {
+  font-size: 0.88rem; font-weight: 200;
+  color: rgba(255,255,255,0.5); line-height: 1.9;
+}
+@media(max-width:1024px) {
+  .ess-grid { grid-template-columns: 1fr; }
+  .ess-card { border-right: none; border-bottom: 1px solid var(--border); }
+  .ess-card:last-child { border-bottom: none; }
+  .ess-closing { margin-left:-32px; margin-right:-32px; }
+}
+@media(max-width:640px) {
+  .ess-closing { margin-left:-20px; margin-right:-20px; padding:48px 24px; margin-bottom:-60px; }
+}
 </style>
 </head>
 <body>
@@ -858,21 +919,71 @@ footer{background:var(--onix);padding:68px 64px 28px}
 </section>
 
 <!-- DIFERENCIAIS -->
-<section id="diferenciais">
-  <div class="dif-intro reveal">
-    <p class="eyebrow">Nossa essência</p>
+<section id="diferenciais" style="background:var(--pergaminho)">
+
+  <!-- Intro -->
+  <div class="reveal" style="max-width:760px;margin:0 auto;text-align:center">
+    <p class="eyebrow" style="justify-content:center">
+      <span style="width:28px;height:1px;background:var(--bege);display:block"></span>
+      Nossa essência
+    </p>
     <h2 class="sec-title">Por que escolher a<br><em>Andressa Cabral?</em></h2>
-    <div class="divider"></div>
-    <p class="sec-sub">Cada detalhe foi pensado para oferecer uma experiência única de cuidado, segurança e resultados que respeitam sua beleza natural.</p>
+    <div class="divider" style="margin:24px auto"></div>
+    <p style="font-family:var(--font-display);font-size:clamp(1rem,1.8vw,1.25rem);font-weight:200;font-style:italic;color:var(--cinza);line-height:1.9;margin-bottom:16px">
+      Acreditamos que a estética vai muito além da aparência.
+    </p>
+    <p style="font-size:0.9rem;font-weight:200;color:var(--cinza);line-height:1.95;max-width:620px;margin:0 auto">
+      Quando uma mulher se sente bonita, ela se posiciona melhor, sorri com mais segurança e transmite confiança em tudo o que faz. Por isso, cada tratamento é planejado para respeitar sua individualidade, valorizar seus traços e revelar uma versão mais elegante, iluminada e segura de você mesma.
+    </p>
   </div>
-  <div class="dif-grid">
-    <div class="dif-card reveal d1"><span class="dif-icon">✦</span><h3 class="dif-title">Tecnologia de última geração</h3><p class="dif-text">Equipamentos certificados e protocolos atualizados com as mais recentes inovações da medicina estética mundial.</p></div>
-    <div class="dif-card reveal d2"><span class="dif-icon">◈</span><h3 class="dif-title">Profissionais especializados</h3><p class="dif-text">Equipe com formação de excelência, experiência comprovada e constante atualização técnico-científica.</p></div>
-    <div class="dif-card reveal d3"><span class="dif-icon">❋</span><h3 class="dif-title">Atendimento personalizado</h3><p class="dif-text">Cada protocolo é desenhado exclusivamente para você, respeitando suas particularidades e objetivos.</p></div>
-    <div class="dif-card reveal d1"><span class="dif-icon">◎</span><h3 class="dif-title">Ambiente premium e acolhedor</h3><p class="dif-text">Espaço sofisticado onde cada visita se transforma em uma experiência sensorial de bem-estar e acolhimento.</p></div>
-    <div class="dif-card reveal d2"><span class="dif-icon">⟡</span><h3 class="dif-title">Protocolos exclusivos</h3><p class="dif-text">Combinações únicas de tratamentos desenvolvidas por nossa equipe para resultados superiores e duradouros.</p></div>
-    <div class="dif-card reveal d3"><span class="dif-icon">✿</span><h3 class="dif-title">Resultados naturais</h3><p class="dif-text">Nossa filosofia prioriza a harmonia e a naturalidade, realçando o que você já tem de mais belo.</p></div>
+
+  <!-- Três pilares -->
+  <div class="ess-grid reveal" style="margin-top:64px">
+
+    <div class="ess-card">
+      <div class="ess-sep">
+        <div class="ess-sep-line"></div>
+        <span class="ess-sep-label">Métodos Exclusivos</span>
+        <div class="ess-sep-line"></div>
+      </div>
+      <p class="ess-text">Protocolos desenvolvidos para atender as necessidades reais da sua pele, respeitando sua história, seus objetivos e sua individualidade.</p>
+    </div>
+
+    <div class="ess-card">
+      <div class="ess-sep">
+        <div class="ess-sep-line"></div>
+        <span class="ess-sep-label">Beleza com Elegância</span>
+        <div class="ess-sep-line"></div>
+      </div>
+      <p class="ess-text">Valorizamos seus traços, refinamos detalhes e realçamos sua beleza sem excessos.</p>
+    </div>
+
+    <div class="ess-card">
+      <div class="ess-sep">
+        <div class="ess-sep-line"></div>
+        <span class="ess-sep-label">Experiência e Confiança</span>
+        <div class="ess-sep-line"></div>
+      </div>
+      <p class="ess-text">Há mais de 18 anos ajudando mulheres a conquistarem muito mais do que resultados estéticos.</p>
+    </div>
+
   </div>
+
+  <!-- Closing statement -->
+  <div class="ess-closing reveal">
+    <p class="ess-closing-lines">
+      Mais autoestima.<br>
+      Mais segurança.<br>
+      Mais confiança.
+    </p>
+    <div class="ess-closing-divider"></div>
+    <p class="ess-closing-sub">Porque os procedimentos são apenas o começo.<br>A verdadeira transformação acontece na forma como você se sente.</p>
+    <a href="https://wa.me/5565981259468" target="_blank" class="btn-p" style="background:var(--onix);border-color:var(--onix);display:inline-flex;margin-top:36px">
+      <svg width="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+      Agendar Minha Avaliação
+    </a>
+  </div>
+
 </section>
 
 <!-- TRATAMENTOS -->
