@@ -691,14 +691,15 @@ footer{background:var(--onix);padding:68px 64px 28px}
 
 /* ── MÉTODO HERO DESTAQUE ── */
 .trat-hero {
-  display: grid !important;
-  grid-template-columns: 1fr !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
   gap: 0 !important;
   margin-bottom: 0 !important;
   background: var(--onix);
   margin-left: -64px;
   margin-right: -64px;
-  padding: 80px 64px;
+  padding: 90px 64px;
   position: relative;
   overflow: hidden;
   text-align: center;
@@ -713,10 +714,11 @@ footer{background:var(--onix);padding:68px 64px 28px}
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
-  margin-bottom: 40px;
+  margin-bottom: 44px;
+  position: relative; z-index: 1;
 }
 .trat-hero-logo img {
-  height: 80px !important;
+  height: 72px !important;
   width: auto;
   filter: none !important;
   opacity: 1 !important;
@@ -734,21 +736,23 @@ footer{background:var(--onix);padding:68px 64px 28px}
 .trat-hero-text .eyebrow::before { background: var(--prata) !important; }
 .trat-manifesto {
   font-family: var(--font-display) !important;
-  font-size: clamp(1.1rem, 2vw, 1.5rem) !important;
+  font-size: clamp(1.05rem, 1.8vw, 1.4rem) !important;
   font-weight: 200 !important;
   font-style: italic !important;
-  color: rgba(255,255,255,0.65) !important;
-  line-height: 2 !important;
-  max-width: 640px;
-  margin: 0 auto 44px !important;
+  color: rgba(255,255,255,0.6) !important;
+  line-height: 2.1 !important;
+  max-width: 600px;
+  margin: 0 auto 48px !important;
+  position: relative; z-index: 1;
 }
 .trat-hero .btn-p {
   background: transparent !important;
-  border-color: rgba(201,194,187,0.4) !important;
+  border-color: rgba(201,194,187,0.45) !important;
   color: var(--prata) !important;
-  letter-spacing: 0.28em !important;
+  letter-spacing: 0.24em !important;
   transition: all 0.35s !important;
   margin: 0 auto;
+  position: relative; z-index: 1;
 }
 .trat-hero .btn-p:hover {
   background: var(--prata) !important;
@@ -757,10 +761,11 @@ footer{background:var(--onix);padding:68px 64px 28px}
 }
 .trat-hero-img-logo {
   position: absolute;
-  right: 60px; top: 50%; transform: translateY(-50%);
-  opacity: 0.06;
-  height: 280px; width: auto;
+  right: 40px; top: 50%; transform: translateY(-50%);
+  opacity: 0.05;
+  height: 320px; width: auto;
   pointer-events: none;
+  filter: invert(1);
 }
 @media(max-width:1024px) {
   .trat-hero { margin-left: -32px !important; margin-right: -32px !important; padding: 64px 32px !important; }
@@ -871,7 +876,7 @@ footer{background:var(--onix);padding:68px 64px 28px}
 </section>
 
 <!-- TRATAMENTOS -->
-<section id="tratamentos">
+<section id="tratamentos" style="padding-top:0">
 
   <!-- Hero: Método AC Ilumina -->
   <div class="trat-hero reveal">
